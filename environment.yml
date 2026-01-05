@@ -1,5 +1,4 @@
-cat <<EOF > environment.yml
-name: isl-project
+name: portfolio_optimizer
 channels:
   - conda-forge
   - defaults
@@ -14,4 +13,3 @@ dependencies:
   - plotly
   - streamlit
   - pip
-EOF
