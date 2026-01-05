@@ -79,7 +79,6 @@ def train_and_optimize():
     # 10% of capital deployed daily). In a production environment, this threshold 
     # would be fixed based on the training set (e.g., Score > 0.65).
     print("--- 3. Evaluating with 'Top 10% Conviction' ---")
-    git init
     y_prob = best_model.predict_proba(X_test)[:, 1]
     
     # Dataframe to sort predictions by confidence
