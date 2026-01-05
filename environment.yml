@@ -1,4 +1,8 @@
+cat <<EOF > environment.yml
 name: isl-project
+channels:
+  - conda-forge
+  - defaults
 dependencies:
   - python=3.11
   - pandas
@@ -9,3 +13,5 @@ dependencies:
   - yfinance
   - plotly
   - streamlit
+  - pip
+EOF
