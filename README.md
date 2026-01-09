@@ -1,4 +1,4 @@
-# Alpha Allocator: AI-Driven Strategic Portfolio Optimization
+# Alpha Allocator: Portfolio Optimizer
 
 ### Research Question
 *Can a ML model, trained on sector-relative technical indicators, identify stocks that statistically outperform a passive market-cap-weighted benchmark?*
@@ -30,4 +30,16 @@ The system outputs a high-conviction "Buy" list which feeds into a portfolio sim
 ├── data/                   # (Auto-Generated) Stores downloaded stock data
 └── results/                # (Auto-Generated) Stores performance plots and audits
 ```
-## To Run Type:  "python main.py"
+## How to run
+
+### Setup Environment
+Clone the repository and install dependencies:
+
+**Terminal**
+- git clone https://github.com/PladimirVutin1991/alpha-allocator.git
+- cd alpha-allocator.git
+- conda env create -f environment.yml
+- conda activate alpha-allocator
+
+### Run the pipeline
+python main.py
