@@ -42,10 +42,9 @@ def train_and_optimize():
     print(f"DEBUG: NaN values in X_train: {X_train.isnull().sum().sum()}")
     assert X_train.isnull().sum().sum() == 0, "Error: NaNs found in training data!"
 
-    scaler = StandardScaler()
-
+    # ==========================================
     # --- 2. MODEL: GRADIENT BOOSTING ---
-    # Gradient Boosting (like XGBoost)
+    # ==========================================
     print("--- 2. Training Gradient Boosting Model ---")
     
     gb = HistGradientBoostingClassifier(
@@ -73,11 +72,27 @@ def train_and_optimize():
     best_model = search.best_estimator_
     print(f"✅ Best Params: {search.best_params_}")
 
+    # OVERFITTING CHECK 
+    print("\n--- Overfitting Check (Train vs Test) ---")
+    # Training accuracy on 2015-2023 
+    train_acc = best_model.score(X_train, y_train)
+    
+    # Testing accuracy on 2024-2025 
+    test_acc = best_model.score(X_test, y_test)
+    
+    print(f"Training Accuracy: {train_acc:.2%}")
+    print(f"Test Accuracy:     {test_acc:.2%}")
+    print(f"Gap:               {train_acc - test_acc:.2%}")
+    
+    if (train_acc - test_acc) > 0.10:
+        print("⚠️ High Overfitting detected (>10% gap")
+    else:
+        print("✅ Model looks stable.")
+
+    # ==========================================
     # --- 3. EVALUATION (TOP 10%) ---
-    # NOTE: For this study, we define the 'Top Decile' dynamically based on the 
-    # test set distribution to simulate a consistently active strategy (approx. 
-    # 10% of capital deployed daily). In a production environment, this threshold 
-    # would be fixed based on the training set (e.g., Score > 0.65).
+    # NOTE: We define the 'Top Decile' dynamically based on the  test set distribution. In a production environment, this threshold would be fixed.
+    # ==========================================
     print("--- 3. Evaluating with 'Top 10% Conviction' ---")
     y_prob = best_model.predict_proba(X_test)[:, 1]
     

@@ -83,7 +83,10 @@ def run_simulation(profile='Growth', threshold=0.53, is_dashboard=False):
     preds, stock_prices, macro_prices, caps = load_data()
     if preds is None: return None, None
 
+    # ==========================================
     # --- 10 YEAR SIMULATION ---
+    # ==========================================
+    
     sim_start_date = '2015-01-01'
     
     full_prices = pd.concat([stock_prices, macro_prices], axis=1)

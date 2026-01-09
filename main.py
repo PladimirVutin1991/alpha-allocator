@@ -4,10 +4,10 @@ import sys
 import time
 
 def setup_environment():
-    """
-    Checks for required packages and installs them if missing.
-    This ensures the app works on any new machine/environment immediately.
-    """
+
+    #Checks for required packages and installs them if missing.
+    #This ensures the app works on any new machine/environment immediately.
+
     print("\n" + "="*60)
     print("SYSTEM CHECK: Verifying Dependencies...")
     print("="*60)
@@ -40,15 +40,16 @@ def setup_environment():
                 print(f"❌ Failed to install {package}. Please install manually.")
                 sys.exit(1)
 
+
+
+# Runs Python script located in the src/ folder.
 def run_module(script_name):
-    """
-    Runs a Python script located in the src/ folder.
-    """
+    
     print(f"\n" + "="*60)
     print(f"EXECUTING: src/{script_name}")
     print("="*60)
     
-    # check if file exists 
+    # Check if file exists 
     if not os.path.exists(f"src/{script_name}"):
         print(f"❌ Error: src/{script_name} not found!")
         sys.exit(1)
@@ -62,9 +63,9 @@ def run_module(script_name):
         print(f"✅ {script_name} completed successfully.")
 
 def main():
-    # install everything 
+    # Install everything 
     setup_environment()
-    # ensure directories exist
+    # Ensures directories exist
     if not os.path.exists('results'): os.makedirs('results') 
 
     print("\nStarting ISL Strategic Allocator Pipeline...\n")
@@ -72,10 +73,10 @@ def main():
     # Download Data & Engineer Features
     run_module("data_processing.py")
     
-    # train the Random Forest Model
+    # Train the Random Forest Model
     run_module("optimize_model.py")
     
-    # check performance 
+    # Check performance 
     run_module("visualize_performance.py")
     
     print("\n" + "="*60)
@@ -86,7 +87,7 @@ def main():
     
     time.sleep(3)
     
-    # dashboard
+    # Dashboard
     subprocess.run([sys.executable, "-m", "streamlit", "run", "src/app.py"])
 
 if __name__ == "__main__":
