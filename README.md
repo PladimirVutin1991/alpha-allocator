@@ -30,4 +30,4 @@ The system outputs a high-conviction "Buy" list which feeds into a portfolio sim
 ├── data/                   # (Auto-Generated) Stores downloaded stock data
 └── results/                # (Auto-Generated) Stores performance plots and audits
 ```
-## TO RUN TYPE:  "Run "python main.py"
+## TO RUN TYPE:  "python main.py"
