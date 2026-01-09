@@ -42,4 +42,4 @@ Clone the repository and install dependencies:
 - conda activate alpha-allocator
 
 ### Run the pipeline
-python main.py
+- python main.py
