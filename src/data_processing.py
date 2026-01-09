@@ -173,7 +173,7 @@ def prepare_data():
         
         full_df.to_csv('data/ml_dataset.csv')
         print(f"✅ ML Dataset saved. Shape: {full_df.shape}")
-        print(f"Win Rate: {full_df['Target_Return_Beat'].mean():.2%}")
+        print(f"Class Balance: {full_df['Target_Return_Beat'].mean():.2%}")
     else:
         print("❌ Failed.")
 

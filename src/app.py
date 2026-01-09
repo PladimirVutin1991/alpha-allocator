@@ -7,11 +7,82 @@ import os
 from portfolio_simulation import run_simulation, ALLOCATIONS 
 
 TICKER_TO_NAME = {
-    'AAPL': 'Apple', 'MSFT': 'Microsoft', 'NVDA': 'NVIDIA', 'ORCL': 'Oracle', 'ADBE': 'Adobe',
-    'GOOGL': 'Alphabet', 'META': 'Meta', 'JPM': 'JPMorgan', 'BAC': 'Bank of America',
-    'LLY': 'Eli Lilly', 'UNH': 'UnitedHealth', 'AMZN': 'Amazon', 'TSLA': 'Tesla',
-    'XOM': 'Exxon Mobil', 'CVX': 'Chevron', 'BTC-USD': 'Bitcoin', 'AGG': 'Bonds', 'SHV': 'Cash',
-    'SPY': 'S&P 500 ETF', 'GLD': 'Gold', 'VNQ': 'Real Estate ETF', 'DBC': 'Commodities'
+    # --- TECH ---
+    'AAPL': 'Apple', 'MSFT': 'Microsoft', 'NVDA': 'NVIDIA', 'AVGO': 'Broadcom', 'ORCL': 'Oracle', 
+    'ADBE': 'Adobe', 'CRM': 'Salesforce', 'AMD': 'Adv. Micro Devices', 'QCOM': 'Qualcomm', 'INTC': 'Intel', 
+    'TXN': 'Texas Instruments', 'CSCO': 'Cisco', 'ACN': 'Accenture', 'IBM': 'IBM', 'NOW': 'ServiceNow', 
+    'UBER': 'Uber', 'PANW': 'Palo Alto Net.', 'PLTR': 'Palantir', 'SNOW': 'Snowflake', 'MU': 'Micron', 
+    'LRCX': 'Lam Research', 'KLAC': 'KLA Corp', 'SNPS': 'Synopsys', 'CDNS': 'Cadence Design', 'ROP': 'Roper Tech', 
+    'NXPI': 'NXP Semi', 'FTNT': 'Fortinet', 'APH': 'Amphenol', 'ADI': 'Analog Devices', 'TEL': 'TE Connectivity', 
+    'HPQ': 'HP Inc', 'GLW': 'Corning', 'KEYS': 'Keysight', 'IT': 'Gartner', 'CDW': 'CDW Corp', 'BR': 'Broadridge', 
+    'TRMB': 'Trimble', 'TYL': 'Tyler Tech', 'PTC': 'PTC Inc', 'AKAM': 'Akamai', 'GEN': 'Gen Digital', 
+    'STX': 'Seagate', 'NTAP': 'NetApp',
+
+    # --- FINANCIALS ---
+    'JPM': 'JPMorgan Chase', 'BAC': 'Bank of America', 'WFC': 'Wells Fargo', 'C': 'Citigroup', 'MS': 'Morgan Stanley', 
+    'GS': 'Goldman Sachs', 'BLK': 'BlackRock', 'SCHW': 'Charles Schwab', 'AXP': 'American Express', 'SPGI': 'S&P Global', 
+    'PGR': 'Progressive', 'CB': 'Chubb', 'MMC': 'Marsh & McLennan', 'V': 'Visa', 'MA': 'Mastercard', 'PYPL': 'PayPal', 
+    'COF': 'Capital One', 'USB': 'US Bancorp', 'PNC': 'PNC Financial', 'TFC': 'Truist', 'BK': 'BNY Mellon', 
+    'ICE': 'Intercontinental Ex', 'CME': 'CME Group', 'MCO': 'Moodys', 'AON': 'Aon', 'AJG': 'Arthur J. Gallagher', 
+    'TRV': 'Travelers', 'AFL': 'Aflac', 'ALL': 'Allstate', 'HIG': 'Hartford', 'MET': 'MetLife', 'PRU': 'Prudential', 
+    'AMP': 'Ameriprise', 'STT': 'State Street', 'NTRS': 'Northern Trust', 'FITB': 'Fifth Third', 'RF': 'Regions Fin.', 
+    'HBAN': 'Huntington', 'KEY': 'KeyCorp', 'CFG': 'Citizens Fin.', 'SYF': 'Synchrony', 'JKHY': 'Jack Henry', 
+    'FISV': 'Fiserv', 'GPN': 'Global Payments',
+
+    # --- HEALTHCARE ---
+    'LLY': 'Eli Lilly', 'UNH': 'UnitedHealth', 'JNJ': 'Johnson & Johnson', 'MRK': 'Merck', 'ABBV': 'AbbVie', 
+    'TMO': 'Thermo Fisher', 'AMGN': 'Amgen', 'PFE': 'Pfizer', 'ISRG': 'Intuitive Surgical', 'DHR': 'Danaher', 
+    'SYK': 'Stryker', 'ELV': 'Elevance Health', 'GILD': 'Gilead', 'BMY': 'Bristol Myers', 'CVS': 'CVS Health', 
+    'CI': 'Cigna', 'REGN': 'Regeneron', 'VRTX': 'Vertex', 'ZTS': 'Zoetis', 'BDX': 'Becton Dickinson', 
+    'BSX': 'Boston Scientific', 'HUM': 'Humana', 'MCK': 'McKesson', 'COR': 'Cencora', 'HCA': 'HCA Healthcare', 
+    'EW': 'Edwards Life', 'CNC': 'Centene', 'IQV': 'IQVIA', 'A': 'Agilent', 'RMD': 'ResMed', 'MTD': 'Mettler-Toledo', 
+    'RVTY': 'Revvity', 'TFX': 'Teleflex', 'COO': 'CooperCompanies', 'WAT': 'Waters Corp', 'HOLX': 'Hologic', 
+    'BAX': 'Baxter', 'STE': 'STERIS', 'DGX': 'Quest Diagnostics', 'LH': 'Labcorp', 'ALGN': 'Align Tech', 
+    'XRAY': 'Dentsply Sirona', 'BIO': 'Bio-Rad', 'TECH': 'Bio-Techne', 'WST': 'West Pharma',
+
+    # --- CONSUMER ---
+    'AMZN': 'Amazon', 'TSLA': 'Tesla', 'HD': 'Home Depot', 'MCD': 'McDonalds', 'NKE': 'Nike', 'SBUX': 'Starbucks', 
+    'LOW': 'Lowes', 'BKNG': 'Booking Holdings', 'TJX': 'TJX Cos', 'TGT': 'Target', 'WMT': 'Walmart', 'PG': 'Procter & Gamble', 
+    'COST': 'Costco', 'KO': 'Coca-Cola', 'PEP': 'PepsiCo', 'PM': 'Philip Morris', 'MO': 'Altria', 'EL': 'Estee Lauder', 
+    'CL': 'Colgate-Palmolive', 'DG': 'Dollar General', 'DLTR': 'Dollar Tree', 'MNST': 'Monster Bev', 'KDP': 'Keurig Dr Pepper', 
+    'K': 'Kellanova', 'GIS': 'General Mills', 'HSY': 'Hershey', 'KMB': 'Kimberly-Clark', 'SYY': 'Sysco', 'ADM': 'ADM', 
+    'STZ': 'Constellation Brands', 'TSCO': 'Tractor Supply', 'ROST': 'Ross Stores', 'ORLY': 'OReilly Auto', 'AZO': 'AutoZone', 
+    'ULTA': 'Ulta Beauty', 'BBY': 'Best Buy', 'GPC': 'Genuine Parts', 'LKQ': 'LKQ Corp', 'DPZ': 'Dominos', 'YUM': 'Yum! Brands', 
+    'CMG': 'Chipotle', 'DRI': 'Darden', 'DHI': 'DR Horton', 'LEN': 'Lennar', 'PHM': 'PulteGroup', 'NVR': 'NVR Inc',
+
+    # --- ENERGY & IND ---
+    'XOM': 'Exxon Mobil', 'CVX': 'Chevron', 'COP': 'ConocoPhillips', 'SLB': 'Schlumberger', 'EOG': 'EOG Resources', 
+    'MPC': 'Marathon Pet.', 'PSX': 'Phillips 66', 'VLO': 'Valero', 'OXY': 'Occidental', 'KMI': 'Kinder Morgan', 
+    'WMB': 'Williams Cos', 'OKE': 'ONEOK', 'TRGP': 'Targa', 'HAL': 'Halliburton', 'BKR': 'Baker Hughes', 'DVN': 'Devon Energy', 
+    'CTRA': 'Coterra', 'APA': 'APA Corp', 'EQT': 'EQT Corp', 'GE': 'GE Aerospace', 'CAT': 'Caterpillar', 'UNP': 'Union Pacific', 
+    'HON': 'Honeywell', 'UPS': 'UPS', 'BA': 'Boeing', 'LMT': 'Lockheed Martin', 'RTX': 'RTX Corp', 'DE': 'Deere & Co', 
+    'MMM': '3M', 'ETN': 'Eaton', 'ITW': 'Illinois Tool Works', 'WM': 'Waste Management', 'CSX': 'CSX Corp', 'NSC': 'Norfolk Southern', 
+    'FDX': 'FedEx', 'GD': 'General Dynamics', 'NOC': 'Northrop Grumman', 'LHX': 'L3Harris', 'TDG': 'TransDigm', 'TXT': 'Textron', 
+    'HII': 'Huntington Ingalls', 'EMR': 'Emerson', 'PH': 'Parker Hannifin', 'TT': 'Trane', 'CARR': 'Carrier', 'OTIS': 'Otis', 
+    'ROK': 'Rockwell Auto', 'AME': 'AMETEK', 'FAST': 'Fastenal', 'PCAR': 'PACCAR',
+
+    # --- UTILITIES & RE ---
+    'NEE': 'NextEra Energy', 'DUK': 'Duke Energy', 'SO': 'Southern Co', 'AEP': 'American Electric', 'ED': 'Con Edison', 
+    'D': 'Dominion', 'SRE': 'Sempra', 'PEG': 'PSEG', 'WEC': 'WEC Energy', 'XEL': 'Xcel Energy', 'ES': 'Eversource', 
+    'DTE': 'DTE Energy', 'FE': 'FirstEnergy', 'PPL': 'PPL Corp', 'EIX': 'Edison Int', 'AEE': 'Ameren', 'CMS': 'CMS Energy', 
+    'CNP': 'CenterPoint', 'ATO': 'Atmos Energy', 'EVRG': 'Evergy', 'LNT': 'Alliant', 'NI': 'NiSource', 'PNW': 'Pinnacle West', 
+    'PLD': 'Prologis', 'AMT': 'American Tower', 'CCI': 'Crown Castle', 'PSA': 'Public Storage', 'O': 'Realty Income', 
+    'DLR': 'Digital Realty', 'SPG': 'Simon Property', 'WELL': 'Welltower', 'EQIX': 'Equinix', 'SBAC': 'SBA Comms', 
+    'VICI': 'VICI Properties', 'AVB': 'AvalonBay', 'EQR': 'Equity Res', 'EXR': 'Extra Space', 'MAA': 'Mid-America Apt', 
+    'ESS': 'Essex Property', 'UDR': 'UDR Inc', 'IRM': 'Iron Mountain', 'KIM': 'Kimco', 'REG': 'Regency', 'FRT': 'Federal Realty', 
+    'HST': 'Host Hotels',
+
+    # --- MATERIALS & COMM ---
+    'LIN': 'Linde', 'SHW': 'Sherwin-Williams', 'FCX': 'Freeport-McMoRan', 'NEM': 'Newmont', 'APD': 'Air Products', 
+    'ECL': 'Ecolab', 'CTVA': 'Corteva', 'DOW': 'Dow Inc', 'DD': 'DuPont', 'PPG': 'PPG Ind', 'ALB': 'Albemarle', 'FMC': 'FMC Corp', 
+    'MOS': 'Mosaic', 'CF': 'CF Industries', 'NUE': 'Nucor', 'STLD': 'Steel Dynamics', 'VMC': 'Vulcan Mat', 'MLM': 'Martin Marietta', 
+    'BALL': 'Ball Corp', 'AMCR': 'Amcor', 'PKG': 'Packaging Corp', 'GOOGL': 'Alphabet', 'META': 'Meta', 'NFLX': 'Netflix', 
+    'DIS': 'Disney', 'CMCSA': 'Comcast', 'VZ': 'Verizon', 'T': 'AT&T', 'TMUS': 'T-Mobile', 'CHTR': 'Charter', 'WBD': 'Warner Bros', 
+    'OMC': 'Omnicom', 'IPG': 'Interpublic', 'LYV': 'Live Nation', 'EA': 'Electronic Arts', 'TTWO': 'Take-Two', 'MTCH': 'Match Group',
+
+    # --- MACRO ETFs ---
+    'SPY': 'S&P 500 ETF', 'AGG': 'US Bond ETF', 'SHV': 'Short Treasury', 'GLD': 'Gold ETF', 'VNQ': 'Real Estate ETF', 
+    'DBC': 'Commodities', 'LQD': 'Corp Bonds', 'HYG': 'High Yield Bonds', 'BTC-USD': 'Bitcoin'
 }
 
 st.set_page_config(page_title="Alpha Allocator (ISL)", layout="wide")
@@ -101,7 +172,7 @@ if os.path.exists('data/model_predictions.csv'):
                     
                     sec_counts = pick_sectors['Sector'].value_counts().reset_index()
                     sec_counts.columns = ['Sector', 'Count']
-                    fig_sec_donut = px.pie(sec_counts, values='Count', names='Sector', hole=0.5, color_discrete_sequence=px.colors.sequential.Blues_r)
+                    fig_sec_donut = px.pie(sec_counts, values='Count', names='Sector', hole=0.5, color_discrete_sequence=px.colors.sequential.Plasma)
                     fig_sec_donut.update_layout(margin=dict(t=0, b=0, l=0, r=0), height=250, showlegend=True)
                     fig_sec_donut.update_traces(hovertemplate='%{label}: %{value} stocks<extra></extra>')
                     st.plotly_chart(fig_sec_donut, use_container_width=True)
