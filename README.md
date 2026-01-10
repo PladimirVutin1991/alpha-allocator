@@ -38,8 +38,9 @@ Clone the repository and install dependencies:
 **Terminal**
 - git clone https://github.com/PladimirVutin1991/alpha-allocator.git
 - cd alpha-allocator.git
-- conda env create -f environment.yml
+- conda env create -f environment_full.yml
 - conda activate alpha-allocator
 
 ### Run the pipeline
 - python main.py
+- If by any chance it does not run make sure that everything in requirement.txt is installed
