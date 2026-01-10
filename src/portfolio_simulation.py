@@ -84,7 +84,7 @@ def run_simulation(profile='Growth', threshold=0.53, is_dashboard=False):
     if preds is None: return None, None
 
     # ==========================================
-    # --- 10 YEAR SIMULATION ---
+    # --- SIMULATION ---
     # ==========================================
     
     sim_start_date = '2015-01-01'

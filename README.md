@@ -37,7 +37,7 @@ Clone the repository and install dependencies:
 
 **Terminal**
 - git clone https://github.com/PladimirVutin1991/alpha-allocator.git
-- cd alpha-allocator.git
+- cd alpha-allocator
 - conda env create -f environment_full.yml (NOT enviroment.yml)
 - conda activate alpha-allocator
 
