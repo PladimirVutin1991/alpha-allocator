@@ -41,7 +41,7 @@ The pipeline is orchestrated by `main.py` and executes the full end-to-end proce
 └── results/                # (Auto-Generated) Stores performance plots and audits
 ```
 
-How to Run
+## How to Run
 1. Clone the repository
     ```text
     git clone https://github.com/PladimirVutin1991/alpha-allocator.git
