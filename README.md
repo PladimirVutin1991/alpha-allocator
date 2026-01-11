@@ -1,7 +1,7 @@
 # Alpha Allocator: Portfolio Optimizer
 
 ### Research Question
-*Can a Machine Learning model, trained on sector-relative technical indicators, identify a 'top decile' of stocks that statistically outperform a passive market-cap-weighted benchmark?*
+*Can a ML model, trained on sector-relative technical indicators, identify stocks that statistically outperform a passive market-cap-weighted benchmark?*
 
 ---
 
@@ -27,49 +27,48 @@ The pipeline is orchestrated by `main.py` and executes the full end-to-end proce
 
 ## Project Structure
 ```text
-alpha-allocator/
 ├── main.py                 # ENTRY POINT: Orchestrates the entire pipeline
 ├── requirements.txt        # Pip dependency list
 ├── environment_full.yml    # Conda environment specification
 ├── README.md               # Project documentation
 ├── src/                    # Source code
-│   ├── data_processing.py      # Data fetching & feature engineering
-│   ├── optimize_model.py       # Model training & hyperparameter tuning
-│   ├── portfolio_simulation.py # Monte Carlo simulation logic
-│   ├── visualize_performance.py# Generates audit charts
-│   └── app.py                  # Streamlit Dashboard interface
-├── data/                   # (Auto-Generated) Local storage for datasets
-└── results/                # (Auto-Generated) Stores performance plots
+│   ├── data_processing.py      # Fetches YFinance data & calculates features
+│   ├── optimize_model.py       # Trains Gradient Boosting model & tunes parameters
+│   ├── portfolio_simulation.py # Runs Monte Carlo simulations & asset allocation logic
+│   ├── visualize_performance.py# Generates audit charts (Confusion Matrix)
+│   └── app.py                  # Streamlit Dashboard code
+├── data/                   # (Auto-Generated) Local storage for downloaded stock data
+└── results/                # (Auto-Generated) Stores performance plots and audits
+```
 
 How to Run
 1. Clone the repository
-
-git clone [https://github.com/PladimirVutin1991/alpha-allocator.git](https://github.com/PladimirVutin1991/alpha-allocator.git)
+```text
+git clone https://github.com/PladimirVutin1991/alpha-allocator.git
 cd alpha-allocator
-
+```
 2. Create the Environment
 
 This project relies on specific versions of scientific computing libraries. Create the environment using Conda:
-
+```text
 conda env create -f environment_full.yml
 conda activate alpha-allocator
+```
+Note: Use environment_full.yml NOT environment.yml. If it does not work try pip install -r requirements.txt
 
 3. Run the Pipeline
-
-Execute the main script. This will automatically check dependencies, download data, train the model, and launch the dashboard.
-Bash
-
+```text
 python main.py
+```
 
 Requirements
-
-Python 3.9+
-pandas
-numpy
-scikit-learn
-yfinance
-plotly
-streamlit
-joblib
-matplotlib
-seaborn
+- Python 3.9+
+- pandas
+- numpy
+- scikit-learn
+- yfinance
+- plotly
+- streamlit
+- joblib
+- matplotlib
+- seaborn
