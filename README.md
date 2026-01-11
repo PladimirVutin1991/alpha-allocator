@@ -6,24 +6,24 @@
 ---
 
 ## Overview
-The **Alpha Allocator** is a machine learning pipeline designed to bridge the gap between Data Science and Wealth Management. Unlike traditional models that attempt to predict raw stock returns (which is notoriously difficult due to market noise), this project uses a **Sector-Relative** approach.
+The **Alpha Allocator** is a machine learning pipeline that attempts to predict raw stock returns using a **Sector-Relative** approach.
 
-It trains a **Histogram Gradient Boosting Classifier** to identify stocks that are likely to outperform their specific sector peers (e.g., Tech vs. Tech) over a 3-month horizon. The system outputs a high-conviction "Buy" list which feeds into a dynamic portfolio simulation engine, applying aggressive capital allocation to high-conviction assets while maintaining a core-satellite approach with passive ETFs for stability.
+It trains a **Histogram Gradient Boosting Classifier** to identify stocks that are likely to outperform their specific sector over a 3-month horizon. The system outputs a high-conviction "Buy" list which feeds into a dynamic portfolio simulation engine, applying aggressive capital allocation to high-conviction assets while comparing with a passive investement in the S&P500.
 
 ## Key Features
-* **Advanced ML Model:** Uses Histogram Gradient Boosting with `RandomizedSearchCV` for hyperparameter tuning.
+* **Advanced ML Model:** Uses Histogram Gradient Boosting with `RandomizedSearchCV` for parameter tuning.
 * **Sector-Relative Targeting:** "Curves the grades" by comparing stocks only against their sector peers, effectively neutralizing market beta and regime bias.
-* **Monte Carlo Simulation:** A robust engine running 200 simulation paths to project portfolio performance, VaR (Value at Risk), and Sharpe Ratio over a 1-year horizon.
-* **Interactive Dashboard:** A full-stack **Streamlit** application allowing users to visualize tactical picks, adjust risk profiles (Growth/Balanced/Income), and set conviction thresholds in real-time.
+* **Monte Carlo Simulation:** An engine running 200 simulation paths to project portfolio performance, VaR (Value at Risk), and Sharpe Ratio over a 1-year horizon.
+* **Interactive Dashboard:** A streamlit application allowing users to visualize tactical picks, adjust risk profiles, and set conviction thresholds.
 
 ## Project Pipeline
 The pipeline is orchestrated by `main.py` and executes the full end-to-end process:
 
-1.  **Data Ingestion:** Fetches 10 years of daily adjusted closing prices for ~320 US equities and Macro ETFs via `yfinance` (`src/data_processing.py`).
-2.  **Feature Engineering:** Computes "Smart Beta" indicators (RSI, Momentum, Trend Distance) and generates sector-relative targets.
-3.  **Model Training:** Optimizes a Histogram Gradient Boosting Classifier using Time-Series Cross-Validation (`src/optimize_model.py`).
-4.  **Performance Audit:** Evaluates the model on out-of-sample data (2024-2025) and generates confusion matrices (`src/visualize_performance.py`).
-5.  **Simulation & Dashboard:** Runs Monte Carlo simulations and launches the interactive user interface (`src/app.py`).
+1.  **Data:** Fetches 10 years of daily adjusted closing prices for ~320 US equities and Macro ETFs via `yfinance` (`src/data_processing.py`).
+2.  **Features:** Computes "Smart Beta" indicators (RSI, Momentum, Trend Distance) and generates sector-relative targets.
+3.  **Model:** Optimizes a Histogram Gradient Boosting Classifier using Time-Series Cross-Validation (`src/optimize_model.py`).
+4.  **Audit:** Evaluates the model on out-of-sample data (2024-2025) and generates confusion matrices (`src/visualize_performance.py`).
+5.  **Simulation & Dashboard:** Runs Monte Carlo simulations and launches the interactive user interface (`src/app.py` & `src/portfolio_simulation.py`).
 
 ## Project Structure
 ```text
