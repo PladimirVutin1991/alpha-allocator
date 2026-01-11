@@ -63,7 +63,8 @@ The pipeline is orchestrated by `main.py` and executes the full end-to-end proce
     ```text
     python main.py
     ```
-    Note: At the end if you run it the first time streamlit will ask you to register with an email. Just press Enter. The dashboard will then pop up either automatically or through a popup on the down-right corner.
+    Note: At the end if you run it the first time streamlit will ask you to register with an email. Just press Enter. 
+    Second Note: The dashboard will then pop up either automatically or through a popup on the down-right corner. Press Ctrl+C to close in the terminal.
 
 ## Requirements
 - Python 3.9+
