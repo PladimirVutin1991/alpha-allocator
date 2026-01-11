@@ -43,10 +43,10 @@ The pipeline is orchestrated by `main.py` and executes the full end-to-end proce
 
 How to Run
 1. Clone the repository
-```text
-git clone https://github.com/PladimirVutin1991/alpha-allocator.git
-cd alpha-allocator
-```
+    ```text
+    git clone https://github.com/PladimirVutin1991/alpha-allocator.git
+    cd alpha-allocator
+    ```
 2. Create the Environment
 
     This project relies on specific versions of scientific computing libraries. Create the environment using Conda:
@@ -60,18 +60,18 @@ cd alpha-allocator
     ```
 
 3. Run the Pipeline
-```text
-python main.py
-```
+    ```text
+    python main.py
+    ```
 
 Requirements
-- Python 3.9+
-- pandas
-- numpy
-- scikit-learn
-- yfinance
-- plotly
-- streamlit
-- joblib
-- matplotlib
-- seaborn
+    - Python 3.9+
+    - pandas
+    - numpy
+    - scikit-learn
+    - yfinance
+    - plotly
+    - streamlit
+    - joblib
+    - matplotlib
+    - seaborn
