@@ -43,8 +43,13 @@ The pipeline is orchestrated by `main.py` and executes the full end-to-end proce
 
 How to Run
 1. Clone the repository
+Requirements
 
     Python 3.9+
+
+    pandas
+
+    numpy
 
     git clone [https://github.com/PladimirVutin1991/alpha-allocator.git](https://github.com/PladimirVutin1991/alpha-allocator.git)
     cd alpha-allocator
