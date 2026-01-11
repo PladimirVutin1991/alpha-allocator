@@ -43,6 +43,9 @@ The pipeline is orchestrated by `main.py` and executes the full end-to-end proce
 
 How to Run
 1. Clone the repository
+
+    Python 3.9+
+
     git clone [https://github.com/PladimirVutin1991/alpha-allocator.git](https://github.com/PladimirVutin1991/alpha-allocator.git)
     cd alpha-allocator
 
@@ -67,3 +70,27 @@ Requirements
 - joblib
 - matplotlib
 - seaborn
+
+Requirements
+
+    Python 3.9+
+
+    pandas
+
+    numpy
+
+    scikit-learn
+
+    yfinance
+
+    plotly
+
+    streamlit
+
+    joblib
+
+    matplotlib
+
+    seaborn
+
+Author: Vlad Sandrovschi
