@@ -64,7 +64,7 @@ The pipeline is orchestrated by `main.py` and executes the full end-to-end proce
     python main.py
     ```
 
-Requirements
+## Requirements
 - Python 3.9+
 - pandas
 - numpy
