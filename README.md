@@ -40,63 +40,30 @@ The pipeline is orchestrated by `main.py` and executes the full end-to-end proce
 ├── data/                   # (Auto-Generated) Local storage for downloaded stock data
 └── results/                # (Auto-Generated) Stores performance plots and audits
 ```
-## How to run
-
-### Setup Environment
-Clone the repository and install dependencies:
-
-**Terminal**
-- git clone https://github.com/PladimirVutin1991/alpha-allocator.git
-- cd alpha-allocator
-- conda env create -f environment_full.yml (NOT enviroment.yml)
-- conda activate alpha-allocator
-
-### Run the pipeline
-- python main.py
-- If by any chance it does not run make sure that everything in requirement.txt is installed
-
 
 How to Run
 1. Clone the repository
-Bash
-
-git clone [https://github.com/PladimirVutin1991/alpha-allocator.git](https://github.com/PladimirVutin1991/alpha-allocator.git)
-cd alpha-allocator
+    git clone [https://github.com/PladimirVutin1991/alpha-allocator.git](https://github.com/PladimirVutin1991/alpha-allocator.git)
+    cd alpha-allocator
 
 2. Create the Environment
 
 This project relies on specific versions of scientific computing libraries. Create the environment using Conda:
-Bash
+    conda env create -f environment_full.yml
+    conda activate alpha-allocator
 
-conda env create -f environment_full.yml
-conda activate alpha-allocator
-
-(Note: If you do not use Conda, you can install dependencies via pip install -r requirements.txt)
+Note: Use environment_full.yml NOT environment.yml. If it does not work try pip install -r requirements.txt
 3. Run the Pipeline
-
-Execute the main script. This will automatically check dependencies, download data, train the model, and launch the dashboard.
-Bash
-
-python main.py
+    python main.py
 
 Requirements
-
-    Python 3.9+
-
-    pandas
-
-    numpy
-
-    scikit-learn
-
-    yfinance
-
-    plotly
-
-    streamlit
-
-    joblib
-
-    matplotlib
-
-    seaborn
+- Python 3.9+
+- pandas
+- numpy
+- scikit-learn
+- yfinance
+- plotly
+- streamlit
+- joblib
+- matplotlib
+- seaborn
