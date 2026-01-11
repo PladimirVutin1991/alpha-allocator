@@ -49,15 +49,15 @@ cd alpha-allocator
 ```
 2. Create the Environment
 
-This project relies on specific versions of scientific computing libraries. Create the environment using Conda:
-```text
-conda env create -f environment_full.yml
-conda activate alpha-allocator
-```
-Note: Use environment_full.yml NOT environment.yml. If it does not work try 
-```text
-pip install -r requirements.txt
-```
+    This project relies on specific versions of scientific computing libraries. Create the environment using Conda:
+    ```text
+    conda env create -f environment_full.yml
+    conda activate alpha-allocator
+    ```
+    Note: Use environment_full.yml NOT environment.yml. If it does not work try 
+    ```text
+    pip install -r requirements.txt
+    ```
 
 3. Run the Pipeline
 ```text
