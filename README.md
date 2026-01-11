@@ -65,13 +65,13 @@ How to Run
     ```
 
 Requirements
-    - Python 3.9+
-    - pandas
-    - numpy
-    - scikit-learn
-    - yfinance
-    - plotly
-    - streamlit
-    - joblib
-    - matplotlib
-    - seaborn
+- Python 3.9+
+- pandas
+- numpy
+- scikit-learn
+- yfinance
+- plotly
+- streamlit
+- joblib
+- matplotlib
+- seaborn
